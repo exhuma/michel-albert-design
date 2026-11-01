@@ -9,6 +9,7 @@ Inputs:
     styles/base.css                       content rules shared by every theme
     styles/immaterial.css                 sphinx-immaterial adapter
     styles/layout.css                     sizes, columns, margin notes, start page
+    styles/diagrams.css                   mermaid diagrams and their full-screen view
 """
 
 from __future__ import annotations
@@ -104,6 +105,8 @@ def build() -> str:
         (ROOT / "styles" / "immaterial.css").read_text(encoding="utf-8").strip(),
         "",
         (ROOT / "styles" / "layout.css").read_text(encoding="utf-8").strip(),
+        "",
+        (ROOT / "styles" / "diagrams.css").read_text(encoding="utf-8").strip(),
         "",
     ]
     return "\n".join(parts)

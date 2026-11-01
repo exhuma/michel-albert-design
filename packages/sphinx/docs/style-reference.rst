@@ -147,6 +147,52 @@ timeout    30        Seconds before a request is abandoned.
 retries    3         Number of retry attempts on failure.
 =========  ========  ===========================================
 
+Diagrams
+--------
+
+Mermaid diagrams use the theme's colours and follow light and dark. Each one has
+an enlarge button in its top right corner that opens it full screen, where it
+can be panned, zoomed and downloaded as SVG.
+
+.. md-mermaid::
+   :caption: A request through the service, by kind of component
+   :name: request-flow
+
+   flowchart LR
+     client([Client]):::cat1 --> proxy[Reverse proxy]:::cat2
+     proxy --> api[API]:::cat3
+     api --> db[(Database)]:::cat4
+     api --> queue[[Queue]]:::cat5
+     queue --> worker[Worker]:::cat6
+     worker --> db
+
+Without classes, nodes stay neutral and colour comes from the shape alone:
+
+.. md-mermaid::
+
+   sequenceDiagram
+     participant C as Client
+     participant A as API
+     participant D as Database
+     C->>A: GET /decisions
+     A->>D: query
+     D-->>A: rows
+     Note over A: filters by team
+     A-->>C: 200 OK
+
+Series take the six diagram colours in order:
+
+.. md-mermaid::
+   :caption: Where reported decisions come from
+
+   pie
+     "Git repositories" : 42
+     "Wiki pages" : 21
+     "Uploads" : 13
+     "API" : 9
+     "Imports" : 8
+     "Other" : 7
+
 API entry
 ---------
 

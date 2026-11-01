@@ -16,6 +16,9 @@ reference with live examples.
 ## Core rules
 
 - Dark is the main theme. One teal accent on warm brown neutrals; the accent is the only hue that is not a state.
+  Diagrams add six category colours (`diagram-1` to `diagram-6`, text on them `on-diagram-N`): they only tell
+  categories apart, never carry state, and stay distinct for protan, deutan and tritan readers (tested in the
+  Sphinx package).
 - Source Sans 3 for text, Source Code Pro for code. Headings at weight 600, nothing heavier.
 - Flat surfaces, 1px hairlines, 4px radius (2px for tags, none for tables). Only a raised reading sheet casts a shadow.
 - Running text near 65 characters per line. Code and other preformatted blocks never wrap.
