@@ -37,8 +37,12 @@ the stylesheet. A project's own `html_theme_options` win key by key.
   1.2em between paragraphs. Type grows with the screen (18.5 px on laptops, about
   20, 22 and 26 px at 1600, 2000 and 2800 px wide); the line length in characters
   stays the same. Page titles are 1.84 times the text size.
-- One centred frame on every page: navigation, text, an optional margin and the
-  table of contents. Navigation, header and search never move between pages.
+- One centred frame: navigation, text, an optional margin and the table of contents.
+  Its width follows the page: pages without margin notes get a narrower frame, so no
+  empty band is left beside the table of contents.
+- The reading column (text and its margin notes) is raised between hairlines; navigation
+  and the table of contents sit one surface step down. Margin notes share the text's
+  surface because they belong to the paragraph beside them.
 - Notes, tips, hints and "see also" that follow a paragraph or list sit in the margin
   beside it on screens 1365 px and wider, and below it on narrower ones; reading order
   never changes.

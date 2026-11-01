@@ -244,10 +244,14 @@ html .md-footer-meta.md-typeset a { color: var(--ma-accent); text-decoration: un
    - Type follows the screen: sizes are relative to the theme's root, which grows at
      1600 px and 2000 px (theme) and 2800 px (here). The measure is in rem tied to the
      text size, so a line keeps ~65 characters at every size.
-   - One centred frame on every page: navigation, prose, an optional margin, the table
-     of contents. Without notes the contents column moves up beside the prose.
+   - One centred frame: navigation, prose, an optional margin, the table of contents.
+     Its width follows the page: without notes the contents column sits beside the prose
+     and the frame is that much narrower, so no empty band is left at its end.
    - Pages with margin notes get a margin column from 1365 px; code, tables and API
-     signatures then span prose + margin. Pages without notes stay compact.
+     signatures then span prose + margin.
+   - The reading column (prose and its margin notes) is a raised surface between hairlines;
+     navigation and contents sit one step down. Notes share the reading surface: they
+     belong to the paragraph beside them, so they are never boxed off as a side panel.
    - Margin notes: the build wraps a note with the block before it (div.ma-aside); on wide
      screens the note sits beside that block, on narrow screens below it, in source order.
    - The start page's first paragraph is a lede with a clay band (p.ma-lede).            */
@@ -274,19 +278,30 @@ html .md-footer-meta.md-typeset a { color: var(--ma-accent); text-decoration: un
 .md-content__inner.md-typeset { max-width: var(--ma-measure); }
 
 @media screen and (min-width: 76.25em) {
-  /* One frame width on every page, so navigation, header and search never move between
-     pages. Without margin notes the content column is just the prose and the table of
-     contents follows right after it; the spare width goes to the end of the row. */
-  .md-grid { max-width: calc(2 * var(--ma-sidebar) + var(--ma-inner-pad) + var(--ma-wide)); }
+  /* The frame is exactly navigation, prose and contents; pages with margin notes widen it
+     by the margin (below), so no page carries an empty band at the end of the row. */
+  .md-grid { max-width: calc(2 * var(--ma-sidebar) + var(--ma-inner-pad) + var(--ma-measure)); }
   .md-main__inner { justify-content: flex-start; }
   .md-content { flex: 0 0 calc(var(--ma-inner-pad) + var(--ma-measure)); max-width: none; }
+
+  /* depth: the reading column is raised, navigation and contents sit one step down */
+  .md-main__inner {
+    --md-default-bg-color: var(--ma-surface-100); background: var(--ma-surface-100);
+    margin-top: 0; padding-top: 1.2rem;
+  }
+  .md-content {                              /* reaches up to the header */
+    --md-default-bg-color: var(--ma-surface-200); background: var(--ma-surface-200);
+    box-shadow: -1px 0 0 var(--ma-line), 1px 0 0 var(--ma-line);
+    margin-top: -1.2rem; padding-top: 1.2rem;
+  }
 }
 
 /* Margin notes need the whole frame: navigation, prose, gap, margin and table of contents
    come to 68.225rem, 1365 px at the theme's 125 % root. Below that they stay in the text. */
 @media screen and (min-width: 85.3em) {
-  /* pages with margin notes: the content column grows by the margin */
+  /* pages with margin notes: the content column and the frame grow by the margin */
   body:has(.ma-aside) .md-content { flex-basis: calc(var(--ma-inner-pad) + var(--ma-wide)); }
+  body:has(.ma-aside) .md-grid { max-width: calc(2 * var(--ma-sidebar) + var(--ma-inner-pad) + var(--ma-wide)); }
 
   /* ... where code, tables and API signatures span prose + margin */
   body:has(.ma-aside) .md-content__inner > div[class^="highlight"],
