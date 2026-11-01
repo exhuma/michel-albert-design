@@ -82,7 +82,14 @@ decision. Projects only add it as an extension.
    templates that only restyle. Keep content, extensions and real
    functionality (for example a custom template that adds a page, not a look).
 3. Remove the old theme package from the docs dependencies.
-4. Tell Michel what you removed.
+4. Mermaid diagrams: replace `sphinxcontrib.mermaid` with the theme's own
+   `sphinx_immaterial.mermaid_diagrams` extension, rename every
+   `.. mermaid::` to `.. md-mermaid::`, drop the `mermaid_*` settings and the
+   `sphinxcontrib-mermaid` dependency. sphinx-immaterial takes over every
+   `.mermaid` element and expects its own copy of mermaid, so
+   sphinxcontrib-mermaid diagrams show as raw source. The theme's extension
+   ships mermaid with the site and colours diagrams in light and dark.
+5. Tell Michel what you removed.
 
 ## Writing the pages
 
