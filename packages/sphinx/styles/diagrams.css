@@ -1,14 +1,19 @@
 /* Diagrams (diagrams.py, static/michel-albert-diagrams.js).
-   - A diagram is a figure: drawn in the design system's colours, scaled down to the column,
-     with an optional caption. Until it is drawn (or without JavaScript) its source shows.
+   - A diagram is a figure: drawn in the design system's colours, as wide as the column and
+     at most --ma-diagram-max-height tall (then centred), with an optional caption. The
+     theme's own figure rule (fit-content width, auto margins) would shrink it to its
+     narrowest. Until it is drawn (or without JavaScript) its source shows.
    - The enlarge button sits in the top right corner: shown on hover and keyboard focus,
      always visible on touch screens.
    - The full-screen view: a bar with the title and tools, and a stage to pan and zoom in. */
 
-.md-typeset figure.ma-diagram { position: relative; margin: 1.6em 0; text-align: center; }
+:root { --ma-diagram-max-height: min(36rem, 75vh); }
+.md-typeset figure.ma-diagram {
+  position: relative; display: block; width: auto; max-width: none; margin: 1.6em 0; text-align: center;
+}
 .ma-diagram__source { text-align: left; }
 .ma-diagram--drawn > .ma-diagram__source { display: none; }
-.ma-diagram__canvas svg { max-width: 100%; height: auto; }
+.ma-diagram__canvas svg { display: block; width: 100%; height: auto; max-height: var(--ma-diagram-max-height); margin: 0 auto; }
 .md-typeset .ma-diagram__caption { margin-top: .75em; font-size: .875em; line-height: 1.5; color: var(--ma-ink-muted); }
 
 .ma-diagram__enlarge, .ma-diagram-view__tool {

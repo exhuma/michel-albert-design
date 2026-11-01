@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.9.0#subdirectory=packages/sphinx"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.9.1#subdirectory=packages/sphinx"]
 
 Configure
 ---------
@@ -66,7 +66,8 @@ Diagrams
 
 Draw mermaid diagrams with the ``md-mermaid`` directive. The package ships
 mermaid with the site and draws each diagram in the theme's colours, in light
-and dark.
+and dark, as wide as the text column. A tall diagram stops at three quarters
+of the screen height (36rem at most) and is centred.
 
 .. code-block:: rst
 
