@@ -28,6 +28,7 @@ const targets = [
   ['packages/sphinx/src/michel_albert_sphinx/tokens.json', read('design/tokens.json')],
   ['packages/slidev/utils/backdrops.mjs', backdrops],
   ['design/site/backdrops.js', classic],
+  ['packages/sphinx/src/michel_albert_sphinx/static/backdrops.js', classic],
 ]
 
 const check = process.argv.includes('--check')

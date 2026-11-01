@@ -50,8 +50,25 @@ decision. Projects only add it as an extension.
    ]
    ```
 
-   `project` also seeds the contour-line backdrop, so use the project's real
-   name. Don't set `michel_albert_backdrop_seed` unless Michel asks.
+   `project` also seeds the backdrop, so use the project's real name. Don't set
+   `michel_albert_backdrop_seed` unless Michel asks.
+
+   Pick the backdrop with `michel_albert_backdrop_style` by the project's main
+   metaphor; if nothing clearly fits, leave it out (`contours`). Reuse the
+   style of the project's slides when there are any. State the choice and the
+   reason in one line.
+
+   | Style | Use for |
+   |---|---|
+   | `contours` | Default. Overviews, personal pages, anything without a stronger metaphor |
+   | `circuit` | Networks, protocols, hardware, infrastructure, backbone, operations |
+   | `mosaic` | Data models, databases, components, design systems, building blocks |
+   | `flow` | Pipelines, streaming, events, async work, workflows, change over time |
+   | `facets` | Architecture viewpoints, security, hardening, structure |
+   | `ridges` | Observability, metrics, monitoring, performance, signals |
+   | `halftone` | Writing, documentation, publishing, communication |
+   | `engraving` | Fundamentals, theory, history, legacy systems, retrospectives |
+   | `barcode` | Encodings, binary formats, identifiers, inventory, analytics |
 4. Create `docs/index.rst` with a one-paragraph summary of what the project
    does and a `toctree` of the pages.
 5. If the project has `.readthedocs.yaml`, make sure it installs the `docs`
@@ -65,7 +82,14 @@ decision. Projects only add it as an extension.
    templates that only restyle. Keep content, extensions and real
    functionality (for example a custom template that adds a page, not a look).
 3. Remove the old theme package from the docs dependencies.
-4. Tell Michel what you removed.
+4. Mermaid diagrams: replace `sphinxcontrib.mermaid` with the theme's own
+   `sphinx_immaterial.mermaid_diagrams` extension, rename every
+   `.. mermaid::` to `.. md-mermaid::`, drop the `mermaid_*` settings and the
+   `sphinxcontrib-mermaid` dependency. sphinx-immaterial takes over every
+   `.mermaid` element and expects its own copy of mermaid, so
+   sphinxcontrib-mermaid diagrams show as raw source. The theme's extension
+   ships mermaid with the site and colours diagrams in light and dark.
+5. Tell Michel what you removed.
 
 ## Writing the pages
 
