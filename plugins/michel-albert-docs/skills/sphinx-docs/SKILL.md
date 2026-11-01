@@ -7,7 +7,7 @@ description: Use whenever you create, set up, build, migrate or restyle Sphinx d
 
 All of Michel's Sphinx documentation uses one look: his design system on the
 `sphinx_immaterial` theme, delivered by the `michel-albert-sphinx` package
-(https://github.com/exhuma/michel-albert-sphinx). The package owns every visual
+(https://github.com/exhuma/michel-albert-design, folder `packages/sphinx`). The package owns every visual
 decision. Projects only add it as an extension.
 
 ## Rules
@@ -26,13 +26,13 @@ decision. Projects only add it as an extension.
 ## Set up docs in a project
 
 1. Find the newest release tag:
-   `git ls-remote --tags --refs https://github.com/exhuma/michel-albert-sphinx`
-   and use the highest `vX.Y.Z`.
+   `git ls-remote --tags --refs https://github.com/exhuma/michel-albert-design 'sphinx-v*'`
+   and use the highest `sphinx-vX.Y.Z`.
 2. Add the docs dependency in `pyproject.toml` (create the extra if missing):
 
    ```toml
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@vX.Y.Z"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-vX.Y.Z#subdirectory=packages/sphinx"]
    ```
 
    If the project manages docs dependencies elsewhere (`docs/requirements.txt`,

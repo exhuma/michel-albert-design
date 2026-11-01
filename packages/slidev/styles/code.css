@@ -1,0 +1,25 @@
+/* Code: Rich palette, non-focus lines dim to the shared focus opacity.
+   Lines never wrap; shorten the snippet instead. */
+.slidev-layout .slidev-code-wrapper { margin: 0; }
+
+.slidev-layout pre.slidev-code,
+.slidev-layout .slidev-code {
+  font-family: var(--ma-font-mono) !important;
+  font-size: var(--ma-size-code) !important;
+  line-height: var(--ma-lead-code) !important;
+  background: var(--ma-panel) !important;
+  border: 1px solid var(--ma-line);
+  border-radius: var(--ma-radius);
+  white-space: pre;
+  overflow-x: hidden;
+}
+
+.slidev-layout .slidev-code code { white-space: pre; }
+
+.slidev-code .slidev-code-dishonored {
+  opacity: var(--ma-dim);
+  transition: none;
+}
+
+html.print .slidev-code .slidev-code-dishonored,
+.ma-final .slidev-code .slidev-code-dishonored { opacity: 1; }
