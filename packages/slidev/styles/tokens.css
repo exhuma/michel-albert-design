@@ -1,0 +1,64 @@
+/*
+ * Michel Albert design system, slide edition.
+ * Talks run dark (colorSchema: dark). Courses run on dimmed sand (colorSchema: light).
+ * Sizes are for a 1920x1080 canvas.
+ */
+:root {
+  /* light palette: courses, "dimmed sand" */
+  --ma-bg: #ebe5dc;          /* surface-300 as slide ground */
+  --ma-panel: #f6f2ec;       /* surface-100: code blocks lift above the sand */
+  --ma-line: #d9d0c3;
+  --ma-line-strong: #8a7f72;
+  --ma-ink: #231e19;
+  --ma-ink-muted: #5e554b;
+  --ma-accent: #0f6e68;
+  --ma-accent-subtle: #dcece9;
+  --ma-clay: #8c5a38;
+  --ma-good: #3d6b2a;
+  --ma-warn: #8a5a00;
+  --ma-critical: #a63a24;
+  --ma-contour: #d9d0c3;
+
+  --ma-font-sans: "Source Sans 3", "Noto Sans", system-ui, sans-serif;
+  --ma-font-mono: "Source Code Pro", ui-monospace, Menlo, monospace;
+
+  --ma-size-display: 96px;
+  --ma-size-headline: 56px;
+  --ma-lead-headline: 64px;
+  --ma-size-body: 32px;
+  --ma-lead-body: 46px;
+  --ma-size-code: 30px;
+  --ma-lead-code: 45px;
+  --ma-size-label: 28px;
+
+  --ma-pad-x: 120px;
+  --ma-pad-top: 110px;
+  --ma-radius: 4px;
+  --ma-dim: 0.45;
+
+  --slidev-theme-primary: var(--ma-accent);
+  --slidev-code-background: var(--ma-panel);
+  --slidev-code-foreground: var(--ma-ink);
+  --slidev-code-font-size: var(--ma-size-code);
+  --slidev-code-line-height: var(--ma-lead-code);
+  --slidev-code-radius: var(--ma-radius);
+  --slidev-code-padding: 28px 40px;
+  --slidev-code-margin: 0;
+}
+
+html.dark {
+  /* dark palette: talks */
+  --ma-bg: #1c1916;
+  --ma-panel: #2e2924;
+  --ma-line: #3d3731;
+  --ma-line-strong: #7a7065;
+  --ma-ink: #ece6dd;
+  --ma-ink-muted: #a89f93;
+  --ma-accent: #4fb3a9;
+  --ma-accent-subtle: #1f3331;
+  --ma-clay: #b07d56;
+  --ma-good: #8fb573;
+  --ma-warn: #e0a83c;
+  --ma-critical: #e8806a;
+  --ma-contour: #3d3731;
+}

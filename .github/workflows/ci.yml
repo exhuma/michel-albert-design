@@ -3,12 +3,25 @@ name: CI
 on:
   push:
     branches: [main]
-    tags: ["v*"]
+    tags: ["sphinx-v*", "slidev-v*"]
   pull_request:
 
 jobs:
-  test:
+  sync:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      # every package's copy of design/ must match the source
+      - run: node scripts/sync.mjs --check
+
+  sphinx:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/sphinx
     strategy:
       matrix:
         python: ["3.10", "3.12", "3.13"]
@@ -21,6 +34,23 @@ jobs:
       # contrast in both themes, stale generated CSS, docs build with -W
       - run: python -m pytest -q
 
+  slidev:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/slidev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm build:talk
+      - run: pnpm build:course
+
   plugin:
     runs-on: ubuntu-latest
     steps:
@@ -31,3 +61,4 @@ jobs:
       - run: npm install -g @anthropic-ai/claude-code
       - run: claude plugin validate .
       - run: claude plugin validate ./plugins/michel-albert-docs
+      - run: claude plugin validate ./plugins/michel-albert-slides

@@ -1,0 +1,10 @@
+{
+  "name": "michel-albert-slides",
+  "description": "Write Slidev talks and courses with Michel Albert's design system (slidev-theme-michel-albert).",
+  "version": "0.1.0",
+  "author": {
+    "name": "Michel Albert"
+  },
+  "repository": "https://github.com/exhuma/michel-albert-design",
+  "license": "MIT"
+}

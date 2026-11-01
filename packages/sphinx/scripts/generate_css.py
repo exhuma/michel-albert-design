@@ -5,7 +5,7 @@ Usage:
     python scripts/generate_css.py --check  # exit 1 if the shipped file is out of date
 
 Inputs:
-    src/michel_albert_sphinx/tokens.json  the design system's tokens (copy of project/tokens.json)
+    src/michel_albert_sphinx/tokens.json  the design system's tokens (copy of design/tokens.json, kept in sync by scripts/sync.mjs at the repo root)
     styles/base.css                       content rules shared by every theme
     styles/immaterial.css                 sphinx-immaterial adapter
     styles/layout.css                     sizes, columns, margin notes, start page

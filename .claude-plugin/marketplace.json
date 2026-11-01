@@ -9,6 +9,11 @@
       "name": "michel-albert-docs",
       "source": "./plugins/michel-albert-docs",
       "description": "Build Sphinx documentation with Michel Albert's design system."
+    },
+    {
+      "name": "michel-albert-slides",
+      "source": "./plugins/michel-albert-slides",
+      "description": "Write Slidev talks and courses with Michel Albert's design system."
     }
   ]
 }

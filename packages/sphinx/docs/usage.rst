@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-sphinx@v0.5.0"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.6.0#subdirectory=packages/sphinx"]
 
 Configure
 ---------
@@ -97,9 +97,9 @@ Change the look
 
 Don't add CSS to a project. Change this package instead:
 
-1. Update ``src/michel_albert_sphinx/tokens.json`` from the design system, or
+1. Edit ``design/tokens.json`` at the repository root and run ``node scripts/sync.mjs``, or
    edit ``styles/base.css``, ``styles/immaterial.css`` or ``styles/layout.css``.
 2. Run ``python scripts/generate_css.py``.
-3. Run the tests, bump the version and tag a release.
+3. Run the tests, bump the version and tag a release as ``sphinx-vX.Y.Z``.
 
 .. autofunction:: michel_albert_sphinx.setup

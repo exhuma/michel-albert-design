@@ -1,0 +1,51 @@
+{
+  "name": "slidev-theme-michel-albert",
+  "version": "0.1.0",
+  "description": "Michel Albert's slide theme for Slidev: dark talks and sand courses, built on the personal design system.",
+  "author": "Michel Albert",
+  "license": "MIT",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=20",
+    "slidev": ">=53.0.0"
+  },
+  "files": [
+    "components",
+    "layouts",
+    "setup",
+    "styles",
+    "utils"
+  ],
+  "slidev": {
+    "colorSchema": "both",
+    "highlighter": "shiki",
+    "defaults": {
+      "canvasWidth": 1920,
+      "aspectRatio": "16/9",
+      "transition": "none",
+      "fonts": {
+        "sans": "Source Sans 3",
+        "mono": "Source Code Pro",
+        "weights": "400,600"
+      }
+    }
+  },
+  "scripts": {
+    "dev:talk": "slidev example/talk.md",
+    "dev:course": "slidev example/course.md",
+    "build:talk": "slidev build example/talk.md --out dist/talk",
+    "build:course": "slidev build example/course.md --out dist/course"
+  },
+  "devDependencies": {
+    "@slidev/cli": "53.0.0",
+    "markdown-it": "^14.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/exhuma/michel-albert-design.git",
+    "directory": "packages/slidev"
+  }
+}

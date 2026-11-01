@@ -1,0 +1,68 @@
+.slidev-layout {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  background: var(--ma-bg);
+  color: var(--ma-ink);
+  font-family: var(--ma-font-sans);
+  font-size: var(--ma-size-body);
+  line-height: var(--ma-lead-body);
+  font-weight: 400;
+}
+
+.slidev-layout h1,
+.slidev-layout h2 {
+  margin: 0;
+  font-size: var(--ma-size-headline);
+  line-height: var(--ma-lead-headline);
+  font-weight: 600;
+  letter-spacing: -0.5px;
+  text-wrap: balance;
+  max-width: 28ch;
+}
+
+.slidev-layout h3 {
+  margin: 0;
+  font-size: var(--ma-size-body);
+  line-height: var(--ma-lead-body);
+  font-weight: 600;
+}
+
+.slidev-layout p { margin: 0; max-width: 60ch; }
+.slidev-layout a { color: var(--ma-accent); text-underline-offset: 6px; }
+.slidev-layout strong { font-weight: 600; }
+
+/* Talks avoid bullets; courses use quiet dashes when lists appear. */
+.slidev-layout ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.slidev-layout ul > li { padding-left: 40px; position: relative; }
+.slidev-layout ul > li::before { content: "–"; position: absolute; left: 0; color: var(--ma-ink-muted); }
+.slidev-layout ol { margin: 0; padding-left: 48px; display: flex; flex-direction: column; gap: 16px; }
+
+.slidev-layout img {
+  max-width: 100%;
+  border: 1px solid var(--ma-line);
+  border-radius: var(--ma-radius);
+}
+
+.slidev-layout code:not(pre code) {
+  font-family: var(--ma-font-mono);
+  font-size: 0.9em;
+  color: var(--ma-accent);
+}
+
+/* Uppercase label, used for part labels and the course section label. */
+.ma-label {
+  font-size: var(--ma-size-label);
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--ma-ink-muted);
+}
+
+/* Focus rule for builds: the newest step is full strength, earlier steps fade.
+   Exports and handouts show the final state undimmed. */
+.slidev-vclick-prior { opacity: var(--ma-dim); transition: none; }
+html.print .slidev-vclick-prior,
+.ma-final .slidev-vclick-prior { opacity: 1; }
+.slidev-vclick-target { transition: none !important; }
