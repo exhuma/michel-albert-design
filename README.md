@@ -15,7 +15,7 @@ Sphinx docs (pip, pin a tag):
 
 ```toml
 [project.optional-dependencies]
-docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.9.0#subdirectory=packages/sphinx"]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.9.1#subdirectory=packages/sphinx"]
 ```
 
 Slidev decks (pnpm, pin a tag):

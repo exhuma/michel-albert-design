@@ -88,6 +88,7 @@
         into.innerHTML = r.svg;
         if (r.bindFunctions) r.bindFunctions(into);
         var svg = into.querySelector("svg");
+        svg.style.removeProperty("max-width");  // fill the column; the stylesheet caps the height
         labelSlices(svg);
         return svg;
       });

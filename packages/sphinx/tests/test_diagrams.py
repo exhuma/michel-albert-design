@@ -52,3 +52,13 @@ def test_mermaid_and_script_ship_with_the_site(site):
 def test_other_builders_get_the_source(tmp_path):
     text = (build(tmp_path, "text") / "style-reference.txt").read_text(encoding="utf-8")
     assert "flowchart LR" in text and "sequenceDiagram" in text
+
+
+def test_diagrams_fill_the_column_up_to_a_height():
+    """Regression (0.9.0): the theme's figure rule (fit-content width, auto margins) shrank
+    diagrams to their narrowest and left-aligned them."""
+    css = (ROOT / "styles/diagrams.css").read_text(encoding="utf-8")
+    figure = re.search(r"\.md-typeset figure\.ma-diagram \{([^}]*)\}", css).group(1)
+    assert "display: block" in figure and "width: auto" in figure and "max-width: none" in figure
+    svg = re.search(r"\.ma-diagram__canvas svg \{([^}]*)\}", css).group(1)
+    assert "width: 100%" in svg and "max-height: var(--ma-diagram-max-height)" in svg and "margin: 0 auto" in svg
