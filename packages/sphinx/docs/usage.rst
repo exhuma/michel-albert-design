@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.7.0#subdirectory=packages/sphinx"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.8.0#subdirectory=packages/sphinx"]
 
 Configure
 ---------
@@ -73,12 +73,19 @@ Options
 
 ``michel_albert_backdrop``
    ``True`` by default. On screens wider than the frame, the page sits on a
-   raised sheet over contour lines. ``False`` turns it off.
+   raised sheet over a seeded backdrop. ``False`` turns it off.
+
+``michel_albert_backdrop_style``
+   ``"contours"`` by default. One of the design system's nine backdrops:
+   ``contours``, ``circuit``, ``mosaic``, ``flow``, ``facets``, ``ridges``,
+   ``halftone``, ``engraving`` or ``barcode``. Pick the one whose metaphor fits
+   the project, and use the same one for its slides. An unknown name warns and
+   falls back to ``contours``.
 
 ``michel_albert_backdrop_seed``
-   The contour lines are generated from this text, by default the ``project``
-   name, so each project gets its own terrain. The same seed always gives the
-   same lines.
+   The backdrop is generated from this text, by default the ``project`` name,
+   so each project gets its own picture. The same seed always gives the same
+   picture.
 
 Pygments styles
 ---------------

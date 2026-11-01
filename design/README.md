@@ -42,8 +42,9 @@ deck, its handouts and its docs share it. Content stays on plain surfaces.
 Backdrops use the background, the hairline colour and lightness steps between
 them. Never add a hue or raise their contrast.
 
-The Sphinx package still draws the contour backdrop with its own Python
-generator; moving it to these nine styles is planned.
+Every surface draws them with this generator: Slidev imports `backdrops.mjs`,
+and the design site and the Sphinx package ship the browser build
+(`michel_albert_backdrop_style` in a project's `conf.py`).
 
 ## Slides
 

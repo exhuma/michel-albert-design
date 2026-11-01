@@ -10,7 +10,7 @@ Add the dependency (pin a tag):
 
 ```toml
 [project.optional-dependencies]
-docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.7.0#subdirectory=packages/sphinx"]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.8.0#subdirectory=packages/sphinx"]
 ```
 
 Add the extension to `conf.py` and leave `html_theme` unset:
@@ -49,9 +49,11 @@ the stylesheet. A project's own `html_theme_options` win key by key.
   On pages with margin notes, code, tables and API signatures span text and margin.
 - The start page's first paragraph is a lede with a clay band.
 - On screens wider than the frame, the page is a raised sheet with a soft halo over
-  topographic contour lines. The lines are crisp next to the sheet and fade toward the
-  screen edges. The terrain is generated from the project name, so every project gets
-  its own in the same style; the text never sits on the pattern.
+  one of the design system's nine seeded backdrops (contour lines by default). The
+  backdrop is crisp next to the sheet and fades toward the screen edges. It is generated
+  from the project name, so every project gets its own picture in its chosen style; the
+  text never sits on it. It is drawn in the browser by the same generator as slides and
+  the design site; without JavaScript the page keeps its plain background.
 - Links in running text are underlined; navigation links are not.
 - Code and other preformatted text never wrap. Long lines scroll inside the block,
   which can be reached with Tab and scrolled with the arrow keys.
@@ -81,8 +83,9 @@ Options in `conf.py`:
 |---|---|---|
 | `michel_albert_margin_notes` | `True` | Notes after prose go to the margin. |
 | `michel_albert_home_header` | `True` | The start page's first paragraph is a lede. |
-| `michel_albert_backdrop` | `True` | Contour-line backdrop outside the frame. |
-| `michel_albert_backdrop_seed` | `project` | Seed for the backdrop's terrain. |
+| `michel_albert_backdrop` | `True` | Seeded backdrop outside the frame. |
+| `michel_albert_backdrop_style` | `"contours"` | Backdrop style; see the table in `design/README.md`. |
+| `michel_albert_backdrop_seed` | `project` | Seed for the backdrop. |
 
 Give a single note `:class: ma-inline` to keep it in the text.
 
