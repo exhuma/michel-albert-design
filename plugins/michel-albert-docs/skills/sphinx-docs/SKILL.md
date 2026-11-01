@@ -82,13 +82,13 @@ decision. Projects only add it as an extension.
    templates that only restyle. Keep content, extensions and real
    functionality (for example a custom template that adds a page, not a look).
 3. Remove the old theme package from the docs dependencies.
-4. Mermaid diagrams: replace `sphinxcontrib.mermaid` with the theme's own
-   `sphinx_immaterial.mermaid_diagrams` extension, rename every
-   `.. mermaid::` to `.. md-mermaid::`, drop the `mermaid_*` settings and the
-   `sphinxcontrib-mermaid` dependency. sphinx-immaterial takes over every
-   `.mermaid` element and expects its own copy of mermaid, so
-   sphinxcontrib-mermaid diagrams show as raw source. The theme's extension
-   ships mermaid with the site and colours diagrams in light and dark.
+4. Mermaid diagrams: remove `sphinxcontrib.mermaid` from `extensions`, its
+   `mermaid_*` settings (themes, colours) and the `sphinxcontrib-mermaid`
+   dependency, and rename every `.. mermaid::` to `.. md-mermaid::`. The design
+   package draws `md-mermaid` itself (see "Diagrams" below);
+   sphinxcontrib-mermaid diagrams show as raw source under sphinx-immaterial.
+   Where the old theme coloured nodes by category, use the `cat1` to `cat6`
+   classes instead.
 5. Tell Michel what you removed.
 
 ## Writing the pages
@@ -116,6 +116,33 @@ Follow the design system's content rules:
   shell sessions with a `$` prompt). Long lines are fine; code never wraps and
   scrolls inside its block, so do not hand-break lines to fit.
 - Keep headings shallow: page title, sections, at most one level below.
+
+## Diagrams
+
+Draw diagrams as code with `.. md-mermaid::` (no extension to add; the package
+ships mermaid with the site). Every diagram gets an enlarge button that opens it
+full screen, with pan, zoom and SVG download.
+
+```rst
+.. md-mermaid::
+   :caption: A request through the service, by kind of component
+   :name: request-flow
+
+   flowchart LR
+     client([Client]):::cat1 --> api[API]:::cat3
+     api --> db[(Database)]:::cat4
+```
+
+- Give a diagram a `:caption:` when it needs a title; it shows under the diagram
+  and as the full-screen title. `:name:` makes it a link target.
+- Colours come from the theme; never set colours in the diagram (`style`,
+  `classDef` with colours, `%%{init}%%` themes).
+- To tell categories apart, tag nodes with `cat1` to `cat6` (`A:::cat1` in
+  flowcharts, `class A cat1` in state diagrams). Six at most; the six colours
+  stay distinct for colour-blind readers. Pie slices, git branches and timeline
+  sections take the same colours automatically.
+- Colour never carries meaning alone: label every node, edge and state, and say
+  in the caption or text what the categories are.
 
 ## Build and check
 

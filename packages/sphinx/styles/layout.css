@@ -65,6 +65,7 @@
   body:has(.ma-aside) .md-content__inner > div[class^="highlight"],
   body:has(.ma-aside) .md-content__inner > .md-typeset__scrollwrap,
   body:has(.ma-aside) .md-content__inner > table,
+  body:has(.ma-aside) .md-content__inner > figure.ma-diagram,
   body:has(.ma-aside) .md-content__inner > dl.py > dt {
     width: var(--ma-wide); max-width: none; box-sizing: border-box;
   }

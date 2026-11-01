@@ -9,7 +9,7 @@ Add the package to the project's documentation dependencies:
 .. code-block:: toml
 
    [project.optional-dependencies]
-   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.8.0#subdirectory=packages/sphinx"]
+   docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.9.0#subdirectory=packages/sphinx"]
 
 Configure
 ---------
@@ -60,6 +60,42 @@ stay in the text. To keep one note in the text, give it a class:
 
 Pages with margin notes get the margin column; code blocks, tables and API
 signatures on those pages span the text and the margin.
+
+Diagrams
+--------
+
+Draw mermaid diagrams with the ``md-mermaid`` directive. The package ships
+mermaid with the site and draws each diagram in the theme's colours, in light
+and dark.
+
+.. code-block:: rst
+
+   .. md-mermaid::
+      :caption: A request through the service, by kind of component
+      :name: request-flow
+
+      flowchart LR
+        client([Client]):::cat1 --> api[API]:::cat3
+        api --> db[(Database)]:::cat4
+
+``:caption:``
+   Shown under the diagram and as the title of the full-screen view. Without
+   it, the full-screen view shows the section heading.
+
+``:name:``
+   A link target. The full-screen view's address ends in ``#`` and this name,
+   so a link to it opens the diagram enlarged.
+
+Tag nodes with the classes ``cat1`` to ``cat6`` to tell categories apart
+(``A:::cat1`` in flowcharts, ``class A cat1`` in state diagrams). The six
+colours stay distinct for readers with any form of colour blindness; pie
+slices, git branches and timeline sections use them in order. Don't set
+colours in a diagram, and label everything that a colour marks.
+
+Every diagram has an enlarge button in its top right corner (always shown on
+touch screens). The full-screen view pans and zooms with the mouse wheel, by
+dragging, by pinching, or with the keys :kbd:`+`, :kbd:`-`, :kbd:`0` (fit) and
+the arrow keys, and downloads the diagram as SVG.
 
 Options
 -------

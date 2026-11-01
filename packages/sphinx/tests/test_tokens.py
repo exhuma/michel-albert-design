@@ -39,6 +39,7 @@ PAIRS = [
     ("line-strong", "surface-100", 3.0),
     ("line-strong", "surface-200", 3.0),
     ("accent", "surface-200", 3.0),  # focus ring
+    *((f"on-diagram-{i}", f"diagram-{i}", 4.5) for i in range(1, 7)),  # diagram labels
 ]
 
 

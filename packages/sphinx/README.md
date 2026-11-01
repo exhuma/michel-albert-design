@@ -10,7 +10,7 @@ Add the dependency (pin a tag):
 
 ```toml
 [project.optional-dependencies]
-docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.8.0#subdirectory=packages/sphinx"]
+docs = ["michel-albert-sphinx @ git+https://github.com/exhuma/michel-albert-design@sphinx-v0.9.0#subdirectory=packages/sphinx"]
 ```
 
 Add the extension to `conf.py` and leave `html_theme` unset:
@@ -62,6 +62,12 @@ the stylesheet. A project's own `html_theme_options` win key by key.
 - Syntax highlighting uses the design system's `code-*` tokens: teal keywords, plum
   constants, dark-clay built-ins (`print`, `len`, `self`), slate function and class
   names and data keys, ochre numbers and decorators, moss strings, muted comments.
+- Mermaid diagrams (`.. md-mermaid::`, with optional `:caption:` and `:name:`) are drawn
+  in the theme's colours and follow light and dark. Six category colours
+  (`diagram-1` to `diagram-6`, used with the classes `cat1` to `cat6` and for pie
+  slices and other series) stay distinct for colour-blind readers. Every diagram has
+  an enlarge button for a full-screen view with pan, zoom, fit, SVG download and a
+  link that reopens it (`#name`). Mermaid ships with the site; no CDN.
 
 ## Pygments styles
 

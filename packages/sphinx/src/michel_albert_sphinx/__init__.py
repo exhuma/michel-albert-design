@@ -6,6 +6,8 @@ Add ``"michel_albert_sphinx"`` to ``extensions`` in ``conf.py``. The extension
 * applies the design system's colours, type and shapes (light and dark),
 * ships its own fonts, so pages make no requests to Google Fonts,
 * makes overflowing code blocks reachable by keyboard,
+* draws mermaid diagrams (``md-mermaid``) in the design system's colours, with a
+  full-screen view to pan, zoom and download them,
 * sets notes, tips, hints and "see also" in the margin beside the paragraph they follow
   (``michel_albert_margin_notes = False`` turns this off),
 * styles the start page's first paragraph as a lede (``michel_albert_home_header = False``
@@ -28,6 +30,8 @@ from sphinx.application import Sphinx
 from sphinx.config import Config
 from sphinx.transforms.post_transforms import SphinxPostTransform
 from sphinx.util import logging
+
+from . import diagrams
 
 try:
     __version__ = version("michel-albert-sphinx")
@@ -186,4 +190,6 @@ def setup(app: Sphinx) -> dict[str, Any]:
     app.connect("builder-inited", _add_backdrop)
     app.add_css_file("michel-albert.css", priority=900)
     app.add_js_file("michel-albert.js", priority=900)
+    diagrams.setup(app)
+    app.add_js_file("michel-albert-diagrams.js", priority=900)
     return {"version": __version__, "parallel_read_safe": True, "parallel_write_safe": True}
